@@ -8,31 +8,44 @@
 // 自定义样式
 @import "minimal-mistakes/custom";
 
+/* ------------------------------------------------------------
+   新增：解决导航栏不显示背景图的问题
+   ------------------------------------------------------------ */
+
+// 👇 必须添加：设置整个导航栏（Masthead）背景为透明
+.masthead {
+    background-color: transparent !important; /* 设置背景透明，让网页背景图显示出来 */
+}
+
+/* ------------------------------------------------------------
+   导航栏搜索框 (文本框) 样式调整
+   ------------------------------------------------------------ */
+
 // 👇 新增：导航栏搜索框（文本框）样式调整
 .search-field {
-  /* 1. 背景透明度（白色半透，最后一个值 0~1 控制透明度） */
-  background: rgba(255, 255, 255, 0.3) !important; /* !important 确保覆盖主题默认样式 */
-  /* 可选：完全透明背景（继承页面背景），替换上面一行即可 */
-  /* background: transparent !important; */
+  /* 1. 背景透明度（白色半透，最后一个值 0~1 控制透明度） */
+  background: rgba(255, 255, 255, 0.3) !important; /* !important 确保覆盖主题默认样式 */
+  /* 可选：完全透明背景（继承页面背景），替换上面一行即可 */
+  /* background: transparent !important; */
 
-  /* 2. 描边样式（宽度 + 样式 + 颜色） */
-  border: 1px solid #e5e7eb !important; /* 浅灰色细描边，按需改颜色 */
-  /* 可选：圆角优化（主题默认可能有圆角，可调整大小） */
-  border-radius: 6px !important; /* 数值越大圆角越明显，0 为直角 */
+  /* 2. 描边样式（宽度 + 样式 + 颜色） */
+  border: 1px solid #e5e7eb !important; /* 浅灰色细描边，按需改颜色 */
+  /* 可选：圆角优化（主题默认可能有圆角，可调整大小） */
+  border-radius: 6px !important; /* 数值越大圆角越明显，0 为直角 */
 
-  /* 3. 文字颜色（确保在半透背景上可读性） */
-  color: #2d3748 !important; /* 深灰色文字，按需调整 */
+  /* 3. 文字颜色（确保在半透背景上可读性） */
+  color: #2d3748 !important; /* 深灰色文字，按需调整 */
 
-  /* 4.  placeholder 文字颜色（优化提示文字可读性） */
-  &::placeholder {
-    color: rgba(45, 55, 72, 0.6) !important; /* 半透深灰色，避免太淡 */
-  }
+  /* 4.  placeholder 文字颜色（优化提示文字可读性） */
+  &::placeholder {
+    color: rgba(45, 55, 72, 0.6) !important; /* 半透深灰色，避免太淡 */
+  }
 }
 
 // 👇 可选：搜索框聚焦时样式（优化交互体验）
 .search-field:focus {
-  outline: none !important; /* 清除浏览器默认聚焦边框 */
-  border-color: #4299e1 !important; /* 聚焦时描边变蓝色（可改其他颜色） */
-  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2) !important; /* 聚焦发光效果，可选 */
-  background: rgba(255, 255, 255, 0.4) !important; /* 聚焦时透明度稍高，可选 */
+  outline: none !important; /* 清除浏览器默认聚焦边框 */
+  border-color: #4299e1 !important; /* 聚焦时描边变蓝色（可改其他颜色） */
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2) !important; /* 聚焦发光效果，可选 */
+  background: rgba(255, 255, 255, 0.4) !important; /* 聚焦时透明度稍高，可选 */
 }
