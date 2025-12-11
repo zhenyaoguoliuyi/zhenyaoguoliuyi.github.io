@@ -14,6 +14,7 @@
 
 // 1. 解决导航栏 (Masthead) 不显示背景图的问题
 /* 尝试使用更高的优先级来覆盖主题皮肤 */
+$masthead-background: transparent;
 .page__header .masthead,
 .masthead {
     background-color: transparent !important; 
