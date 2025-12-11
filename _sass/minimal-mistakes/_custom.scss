@@ -1,13 +1,23 @@
+/* ==========================================================================
+   Minimal Mistakes 主题自定义样式 - 导航栏透明化终极版
+   
+   目标：确保背景图片能透过导航栏和页面主体内容显示出来。
+   ========================================================================== */
+
+
 /* ------------------------------------------------------------
-   页面背景设置 (您原来的代码)
+   1. 页面背景设置 (您的现有代码，负责加载背景图)
    ------------------------------------------------------------ */
 body {
+    /* 确保 body 本身透明，并建立定位上下文 */
     min-height: 100vh;
     position: relative; 
-    margin: 100; 
+    margin: 0; 
+    background-color: transparent !important; 
 }
 
 body::before {
+    /* 伪元素负责显示背景图片，并使用 z-index: -1 推到最底层 */
     content: "";
     position: fixed;
     top: 0;
@@ -25,42 +35,67 @@ body::before {
     z-index: -1;
 }
 
+
 /* ------------------------------------------------------------
-   导航栏透明覆盖（新增或修改）
+   2. 透明化覆盖规则：消除所有白色或蓝色背景
    ------------------------------------------------------------ */
 
-/* 强制覆盖所有主题皮肤和默认背景色 */
-.page__header .masthead,
-.masthead,
-.masthead__inner-wrap { /* 额外确保内部包装器也透明 */
+/* 消除页面主体内容的白色背景 (.page__wrapper 和 .page__content) */
+.page__wrapper,
+.page__content {
     background: transparent !important; 
-    background-color: transparent !important; /* 双重保险 */
+    background-color: transparent !important;
 }
 
-/* 确保导航栏链接文字在透明背景上可见（例如设为白色） */
+/* 消除页面顶部头部容器（外部蓝色条）的背景色 */
+.page__header {
+    background: transparent !important; 
+    background-color: transparent !important; 
+}
+
+/* 消除导航栏 (Masthead) 及其内部结构的背景色 */
+.page__header .masthead,
+.masthead,
+.masthead__inner-wrap,
+.masthead.is-fixed { 
+    background: transparent !important; 
+    background-color: transparent !important; 
+}
+
+/* ------------------------------------------------------------
+   3. 确保文字在背景图上可见
+   ------------------------------------------------------------ */
+
+/* 导航栏标题和链接文字颜色（建议设为白色以适应您的蓝天背景） */
 .site-title, 
 .masthead__menu-item a {
     color: #ffffff !important; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* 可选：增加阴影以提高可读性 */
+    /* 可选：增加阴影以提高文字在复杂背景上的可读性 */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
 }
 
 
 /* ------------------------------------------------------------
-   搜索框样式调整 (您原来的代码)
+   4. 导航栏搜索框 (文本框) 样式调整 (您的原有代码)
    ------------------------------------------------------------ */
 
 .search-field {
+    /* 背景透明度 (白色半透) */
     background: rgba(255, 255, 255, 0.3) !important; 
+    
+    /* 描边、圆角、文字颜色 */
     border: 1px solid #e5e7eb !important; 
     border-radius: 6px !important; 
     color: #2d3748 !important; 
 
+    /* placeholder 文字颜色 */
     &::placeholder {
         color: rgba(45, 55, 72, 0.6) !important; 
     }
 }
 
 .search-field:focus {
+    /* 聚焦时样式 */
     outline: none !important; 
     border-color: #4299e1 !important; 
     box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2) !important; 
