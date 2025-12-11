@@ -1,31 +1,68 @@
+/* ------------------------------------------------------------
+   页面背景设置 (您原来的代码)
+   ------------------------------------------------------------ */
 body {
-  // 确保body至少充满整个视口，并建立定位上下文
-  min-height: 100vh;
-  position: relative; // 这很重要，为::before伪元素提供定位基准
-  margin: 0; // 移除默认边距，确保背景铺满
-
-
+    min-height: 100vh;
+    position: relative; 
+    margin: 0; 
 }
 
 body::before {
-  content: "";
-  // 固定定位，让背景层不随页面滚动
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%; // 覆盖整个视口宽度
-  height: 100%; // 覆盖整个视口高度
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
 
-  // 背景图片设置放在伪元素上
-  background-image: url("/assets/images/DSC_3204.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; // 注意：固定定位元素上这个属性可能表现不同，但可以保留。
-  background-repeat: no-repeat;
+    background-image: url("/assets/images/DSC_3204.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
 
-  // 直接控制背景图层的透明度
-  opacity: 0.75; // 根据你的需要调整这个值 (0 = 完全透明, 1 = 完全不透明)
+    opacity: 0.75; 
+    z-index: -1;
+}
 
-  // 确保背景层在所有内容之下
-  z-index: -1;
+/* ------------------------------------------------------------
+   导航栏透明覆盖（新增或修改）
+   ------------------------------------------------------------ */
+
+/* 强制覆盖所有主题皮肤和默认背景色 */
+.page__header .masthead,
+.masthead,
+.masthead__inner-wrap { /* 额外确保内部包装器也透明 */
+    background: transparent !important; 
+    background-color: transparent !important; /* 双重保险 */
+}
+
+/* 确保导航栏链接文字在透明背景上可见（例如设为白色） */
+.site-title, 
+.masthead__menu-item a {
+    color: #ffffff !important; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* 可选：增加阴影以提高可读性 */
+}
+
+
+/* ------------------------------------------------------------
+   搜索框样式调整 (您原来的代码)
+   ------------------------------------------------------------ */
+
+.search-field {
+    background: rgba(255, 255, 255, 0.3) !important; 
+    border: 1px solid #e5e7eb !important; 
+    border-radius: 6px !important; 
+    color: #2d3748 !important; 
+
+    &::placeholder {
+        color: rgba(45, 55, 72, 0.6) !important; 
+    }
+}
+
+.search-field:focus {
+    outline: none !important; 
+    border-color: #4299e1 !important; 
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2) !important; 
+    background: rgba(255, 255, 255, 0.4) !important; 
 }
