@@ -1,101 +1,73 @@
 /* ==========================================================================
-   Minimal Mistakes 主题自定义样式 - 导航栏透明化终极版
-   
-   目标：确保背景图片能透过导航栏和页面主体内容显示出来。
+   Minimal Mistakes 主题自定义样式 - 背景图在导航栏下方显示
    ========================================================================== */
 
-
 /* ------------------------------------------------------------
-   1. 页面背景设置 (您的现有代码，负责加载背景图)
+   1. 移除全屏背景设置 (避免干扰导航栏)
    ------------------------------------------------------------ */
 body {
-    /* 确保 body 本身透明，并建立定位上下文 */
+    /* 确保 body 自身没有特殊的定位或背景色 */
     min-height: 100vh;
     position: relative; 
     margin: 0; 
-    background-color: transparent !important; 
+    /* 移除 background-color: transparent !important; */
 }
 
+/* 移除 body::before 的背景图片设置 */
 body::before {
-    /* 伪元素负责显示背景图片，并使用 z-index: -1 推到最底层 */
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; 
-    height: 100%; 
+    content: none; /* 禁用这个伪元素 */
+}
 
+
+/* ------------------------------------------------------------
+   2. 将背景图应用到页面主体容器
+   ------------------------------------------------------------ */
+
+/* 页面主体内容容器 (在导航栏下方) */
+.page__wrapper {
+    /* 应用您的背景图片 */
     background-image: url("/assets/images/DSC_3204.jpg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; 
+    background-attachment: fixed; /* 背景固定不随内容滚动 */
     background-repeat: no-repeat;
-
-    opacity: 0.75; 
-    z-index: -1;
+    
+    /* 重新应用您想要的白色背景透明度（如果需要） */
+    background-color: rgba(255, 255, 255, 0.2); /* 示例：白色带一点透明度 */
 }
 
 
 /* ------------------------------------------------------------
-   2. 透明化覆盖规则：消除所有白色或蓝色背景
+   3. 确保导航栏和内容区背景恢复默认（非透明）
    ------------------------------------------------------------ */
 
-/* 消除页面主体内容的白色背景 (.page__wrapper 和 .page__content) */
-.page__wrapper,
-.page__content {
-    background: transparent !important; 
-    background-color: transparent !important;
-}
-
-/* 消除页面顶部头部容器（外部蓝色条）的背景色 */
-.page__header {
-    background: transparent !important; 
-    background-color: transparent !important; 
-}
-
-/* 消除导航栏 (Masthead) 及其内部结构的背景色 */
-.page__header .masthead,
+/* 确保导航栏及其父容器恢复默认颜色（Minimal Mistakes 皮肤色）*/
+.page__header,
 .masthead,
 .masthead__inner-wrap,
-.masthead.is-fixed { 
-    background: transparent !important; 
-    background-color: transparent !important; 
-}
-
-/* ------------------------------------------------------------
-   3. 确保文字在背景图上可见
-   ------------------------------------------------------------ */
-
-/* 导航栏标题和链接文字颜色（建议设为白色以适应您的蓝天背景） */
-.site-title, 
-.masthead__menu-item a {
-    color: #ffffff !important; 
-    /* 可选：增加阴影以提高文字在复杂背景上的可读性 */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
+.masthead.is-fixed,
+.page__content { 
+    /* 移除所有 background: transparent !important; 规则 */
+    /* 保持此处为空白，让主题默认设置生效 */
 }
 
 
 /* ------------------------------------------------------------
-   4. 导航栏搜索框 (文本框) 样式调整 (您的原有代码)
+   4. 导航栏搜索框样式调整 (您的原有代码)
    ------------------------------------------------------------ */
-
 .search-field {
-    /* 背景透明度 (白色半透) */
+    /* 保持搜索框的半透明样式不变 */
     background: rgba(255, 255, 255, 0.3) !important; 
-    
-    /* 描边、圆角、文字颜色 */
     border: 1px solid #e5e7eb !important; 
     border-radius: 6px !important; 
     color: #2d3748 !important; 
 
-    /* placeholder 文字颜色 */
     &::placeholder {
         color: rgba(45, 55, 72, 0.6) !important; 
     }
 }
 
 .search-field:focus {
-    /* 聚焦时样式 */
     outline: none !important; 
     border-color: #4299e1 !important; 
     box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2) !important; 
