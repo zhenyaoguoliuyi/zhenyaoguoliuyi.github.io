@@ -5,45 +5,5 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes"; // 主题核心
 
-// 自定义样式
-@import "minimal-mistakes/custom"; 
-
-/* ------------------------------------------------------------
-   Custom Styles
-   ------------------------------------------------------------ */
-
-// 1. 解决导航栏 (Masthead) 不显示背景图的问题
-/* 尝试使用更高的优先级来覆盖主题皮肤 */
-$masthead-background: transparent;
-.page__header .masthead,
-.masthead {
-    background-color: transparent !important; 
-}
-
-// 2. 导航栏搜索框（文本框）样式调整
-.search-field {
-    /* 背景透明度 */
-    background: rgba(255, 255, 255, 0.3) !important; 
-    
-    /* 描边样式 */
-    border: 1px solid #e5e7eb !important; 
-    
-    /* 圆角优化 */
-    border-radius: 6px !important; 
-    
-    /* 文字颜色 */
-    color: #2d3748 !important; 
-
-    /* placeholder 文字颜色 (Sass 嵌套语法) */
-    &::placeholder {
-        color: rgba(45, 55, 72, 0.6) !important; 
-    }
-}
-
-// 3. 搜索框聚焦时样式
-.search-field:focus {
-    outline: none !important; 
-    border-color: #4299e1 !important; 
-    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2) !important; 
-    background: rgba(255, 255, 255, 0.4) !important; 
-}
+// 仅保留导入自定义文件，确保它在最后
+@import "minimal-mistakes/custom";
