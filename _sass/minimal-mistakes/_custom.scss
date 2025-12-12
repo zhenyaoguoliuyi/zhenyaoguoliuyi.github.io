@@ -12,29 +12,29 @@ body {
 /* ------------------------------------------------------------
    2. 在导航栏下方添加背景图容器（核心修改：适配背景显示）
    ------------------------------------------------------------ */
-.page__content {
-    background: none !important; 
-    background-image: url("../../assets/images/摩天轮.jpg") !important;
-    /* 关键修改1：contain = 完整显示图片（可能留空白）；cover = 铺满容器（可能裁边），二选一 */
-    background-size: contain !important; 
-    /* 关键修改2：移除 fixed，让背景跟随容器 */
-    background-attachment: scroll !important; 
-    background-position: center top !important; /* 顶部居中，避免导航栏遮挡上方 */
-    background-repeat: no-repeat !important;
-    /* 关键修改3：用 padding 替代 min-height，确保背景跟随内容高度，同时预留顶部空间 */
-    padding-top: 4rem !important; /* 避免背景顶部被导航栏遮挡 */
-    padding-bottom: 6rem !important; /* 底部预留空白，避免内容压到背景底部 */
-    position: relative !important;
-    /* 可选：添加背景色兜底（图片加载失败或空白区域显示） */
-    background-color: #f5f5f5 !important;
-}
+//.page__content {
+//    background: none !important; 
+//    background-image: url("../../assets/images/摩天轮.jpg") !important;
+//    /* 关键修改1：contain = 完整显示图片（可能留空白）；cover = 铺满容器（可能裁边），二选一 */
+//    background-size: contain !important; 
+//    /* 关键修改2：移除 fixed，让背景跟随容器 */
+//    background-attachment: scroll !important; 
+//    background-position: center top !important; /* 顶部居中，避免导航栏遮挡上方 */
+//    background-repeat: no-repeat !important;
+//    /* 关键修改3：用 padding 替代 min-height，确保背景跟随内容高度，同时预留顶部空间 */
+//    padding-top: 4rem !important; /* 避免背景顶部被导航栏遮挡 */
+//    padding-bottom: 6rem !important; /* 底部预留空白，避免内容压到背景底部 */
+//    position: relative !important;
+//    /* 可选：添加背景色兜底（图片加载失败或空白区域显示） */
+//    background-color: #f5f5f5 !important;
+//}
 
 /* 调试用：暂时使用纯色背景确认布局 */
-/*.page__content {
+.page__content {
     background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
     min-height: 1000px;
 }
-*/
+
 /* ------------------------------------------------------------
    3. 为内容添加半透明背景提高可读性（保持不变）
    ------------------------------------------------------------ */
