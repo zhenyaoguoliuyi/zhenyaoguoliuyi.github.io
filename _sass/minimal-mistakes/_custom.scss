@@ -1,71 +1,81 @@
 /* ==========================================================================
-   Minimal Mistakes 主题自定义样式 - 背景图在导航栏下方显示（修正版）
+   Minimal Mistakes 主题自定义样式 - 背景图在导航栏下方显示
    ========================================================================== */
 
 /* ------------------------------------------------------------
-   1. 移除全屏背景设置 (保持不变)
+   1. 移除 body 默认全屏背景，重置基础样式
    ------------------------------------------------------------ */
 body {
     min-height: 100vh;
-    position: relative; 
-    margin: 0; 
+    position: relative;
+    margin: 0;
 }
 
 body::before {
-    content: none; /* 禁用这个伪元素 */
+    content: none; /* 禁用主题默认的 body 伪元素背景 */
 }
 
+/* ------------------------------------------------------------
+   2. 导航栏层级优化（关键）：确保导航栏在背景图上方
+   ------------------------------------------------------------ */
+.masthead {
+    position: relative; /* 提升层级，避免被下方背景图覆盖 */
+    z-index: 10; /* 可选：明确层级优先级 */
+}
 
 /* ------------------------------------------------------------
-   2. 将背景图应用到页面主体容器 (修正：增加最小高度)
+   3. 页面主体容器：应用背景图（导航栏下方区域）
    ------------------------------------------------------------ */
-
 .page__wrapper {
-    /* **关键修正：确保内容区有足够的最小高度** */
-    /* 计算公式：100% 视口高度 - 导航栏高度 */
-    min-height: calc(100vh - 4.2rem); /* 4.2rem 是 Minimal Mistakes 默认导航栏高度的近似值 */
+    /* 最小高度：视口高度 - 导航栏高度（适配全屏效果） */
+    min-height: calc(100vh - 4.2rem); /* 4.2rem 是主题默认导航栏高度，若自定义过导航栏高度需同步修改 */
     
-    /* 应用您的背景图片 */
-    background-image: url("/assets/images/DSC_3204.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; 
-    background-repeat: no-repeat;
+    /* 背景图核心配置 */
+    background-image: url("/assets/images/DSC_3204.jpg"); /* 确保图片路径正确（相对于站点根目录） */
+    background-size: cover; /* 背景图自适应容器大小 */
+    background-position: center; /* 背景图居中显示 */
+    background-attachment: fixed; /* 滚动时背景图固定（可选：取消则改为 scroll 随页面滚动） */
+    background-repeat: no-repeat; /* 禁止背景图重复 */
     
-    /* 保持您设置的背景色透明度 */
-    background-color: rgba(255, 255, 255, 0.2); 
+    /* 背景色叠加（增加可读性） */
+    background-color: rgba(255, 255, 255, 0.2); /* 白色半透明叠加，可根据需要调整透明度 */
+    background-blend-mode: overlay; /* 可选：让背景色和背景图更好地融合 */
+    
+    /* 内边距适配：避免内容贴边（适配主题默认布局） */
+    padding: 2rem 0; /* 上下内边距 2rem，左右 0（主题会自动处理左右内边距） */
 }
 
-
 /* ------------------------------------------------------------
-   3. 确保导航栏和内容区背景恢复默认（保持不变）
+   4. 内容区域背景透明（可选）：让背景图透过内容区显示
    ------------------------------------------------------------ */
-.page__header,
-.masthead,
-.masthead__inner-wrap,
-.masthead.is-fixed,
-.page__content { 
-    /* 保持此处为空白，让主题默认设置生效 */
+.page__content {
+    background-color: transparent; /* 取消内容区默认白色背景，让背景图可见 */
+    /* 若需要内容区有独立背景（如白色半透明卡片），可改为：
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 900px;
+    */
 }
 
-
 /* ------------------------------------------------------------
-   4. 导航栏搜索框样式调整 (保持不变)
+   5. 导航栏搜索框样式调整（保持原有配置，优化可读性）
    ------------------------------------------------------------ */
 .search-field {
-    background: rgba(255, 255, 255, 0.3) !important; 
-    border: 1px solid #e5e7eb !important; 
-    border-radius: 6px !important; 
-    color: #2d3748 !important; 
+    background: rgba(255, 255, 255, 0.3) !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 6px !important;
+    color: #2d3748 !important;
 
     &::placeholder {
-        color: rgba(45, 55, 72, 0.6) !important; 
+        color: rgba(45, 55, 72, 0.6) !important;
     }
 }
 
 .search-field:focus {
-    outline: none !important; 
-    border-color: #4299e1 !important; 
-    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2) !important; 
-    background: rgba(255, 255, 255, 0.4) !important; 
+    outline: none !important;
+    border-color: #4299e1 !important;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
 }
