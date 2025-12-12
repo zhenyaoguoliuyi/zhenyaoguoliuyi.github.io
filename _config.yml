@@ -65,7 +65,17 @@ sass:
   # 新增：指定CSS输出目录（主题要求必须配置）
   destination: assets/css
 
+# 在 _config.yml 中添加以下设置
+defaults:
+  # 设置默认背景图
+  - scope:
+      path: ""
+    values:
+      image:
+        path: "/assets/images/DSC_3204.jpg"
 
+# 确认图片目录设置
+image_path: /assets/images
 
   
 # ==========================================
