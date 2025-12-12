@@ -1,7 +1,7 @@
 ---
-# 让 Jekyll 编译此文件1
+# 让 Jekyll 编译此文件
 ---
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+// 替换 Liquid 变量为具体皮肤名称（这里用默认皮肤 default，可根据需求修改）
+@import "minimal-mistakes/skins/default"; 
 @import "minimal-mistakes"; // 主题核心
-// 确保您的自定义文件在最后导入
-@import "minimal-mistakes/custom";
+@import "minimal-mistakes/custom"; // 自定义文件
