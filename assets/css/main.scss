@@ -7,3 +7,9 @@
 
 // 确保您的自定义文件在最后导入
 @import "minimal-mistakes/custom";
+
+/* 可选：直接在 main.scss 中添加额外的样式 */
+.site-title {
+    font-weight: bold;
+    color: #333;
+}
