@@ -12,17 +12,19 @@ body {
 /* ------------------------------------------------------------
    2. 在导航栏下方添加背景图容器（注释已修复，如需启用可去掉外层 //）
    ------------------------------------------------------------ */
- .page__content {
-     // 背景图配置（将 /* ... */ 改为 // 单行注释，避免嵌套）
-     background-image: url("/assets/images/DSC_3204.jpg"); // 路径确保图片存在于 assets/images/ 下
-     background-size: cover;
-     background-position: center;
-     background-attachment: fixed;
-     background-repeat: no-repeat;
-     
-     // 确保内容在背景图上方可读
-     position: relative;
- }
+.page__content {
+    // 强制覆盖主题样式，优先级最高
+    background: none !important; 
+    // 背景图核心配置（加 !important 确保不被覆盖）
+    background-image: url("../../assets/images/DSC_3204.jpg") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    // 确保容器有高度，背景图才会显示（100vh = 屏幕高度）
+    min-height: 100vh !important; 
+    position: relative !important;
+}
 
 /* 调试用：暂时使用纯色背景确认布局 */
 /*.page__content {
