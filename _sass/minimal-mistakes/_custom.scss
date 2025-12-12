@@ -10,20 +10,23 @@ body {
 }
 
 /* ------------------------------------------------------------
-   2. 在导航栏下方添加背景图容器（注释已修复，如需启用可去掉外层 //）
+   2. 在导航栏下方添加背景图容器（核心修改：适配背景显示）
    ------------------------------------------------------------ */
 .page__content {
-    // 强制覆盖主题样式，优先级最高
     background: none !important; 
-    // 背景图核心配置（加 !important 确保不被覆盖）
     background-image: url("../../assets/images/摩天轮.jpg") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
+    /* 关键修改1：contain = 完整显示图片（可能留空白）；cover = 铺满容器（可能裁边），二选一 */
+    background-size: contain !important; 
+    /* 关键修改2：移除 fixed，让背景跟随容器 */
+    background-attachment: scroll !important; 
+    background-position: center top !important; /* 顶部居中，避免导航栏遮挡上方 */
     background-repeat: no-repeat !important;
-    // 确保容器有高度，背景图才会显示（100vh = 屏幕高度）
-    min-height: 100vh !important; 
+    /* 关键修改3：用 padding 替代 min-height，确保背景跟随内容高度，同时预留顶部空间 */
+    padding-top: 4rem !important; /* 避免背景顶部被导航栏遮挡 */
+    padding-bottom: 6rem !important; /* 底部预留空白，避免内容压到背景底部 */
     position: relative !important;
+    /* 可选：添加背景色兜底（图片加载失败或空白区域显示） */
+    background-color: #f5f5f5 !important;
 }
 
 /* 调试用：暂时使用纯色背景确认布局 */
@@ -33,20 +36,20 @@ body {
 }
 */
 /* ------------------------------------------------------------
-   3. 为内容添加半透明背景提高可读性（可选）
+   3. 为内容添加半透明背景提高可读性（保持不变）
    ------------------------------------------------------------ */
 .archive,
 .page,
 .single {
-    /* 为文章内容添加半透明背景 */
     background-color: rgba(255, 255, 255, 0.85);
     padding: 2rem;
     border-radius: 8px;
-    margin: 2rem 0;
+    margin: 2rem auto !important; /* 增加 auto 让内容居中，避免贴边 */
+    max-width: 90% !important; /* 限制内容宽度，适配小屏幕 */
 }
 
 /* ------------------------------------------------------------
-   4. 调整首页布局
+   4. 调整首页布局（保持不变，适配背景）
    ------------------------------------------------------------ */
 .home .page__content {
     background-color: rgba(255, 255, 255, 0.9);
