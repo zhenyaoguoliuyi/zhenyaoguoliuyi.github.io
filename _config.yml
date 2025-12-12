@@ -57,10 +57,13 @@ comments:
 
 # _config.yml
 
-# SCSS配置
+# SCSS配置（关键修正）
 sass:
-  sass_dir: _sass
-  style: compressed
+  sass_dir: _sass          # SCSS源文件目录（保持不变）
+  style: compressed        # 压缩输出（保持不变）
+  sourcemap: never         # 禁用sourcemap（可选，减少文件体积）
+  # 新增：指定CSS输出目录（主题要求必须配置）
+  destination: assets/css
 
 
 
