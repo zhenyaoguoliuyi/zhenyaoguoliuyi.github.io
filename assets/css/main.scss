@@ -1,10 +1,7 @@
 ---
 # 让 Jekyll 编译此文件1
 ---
-
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes"; // 主题核心
-
 // 确保您的自定义文件在最后导入
 @import "minimal-mistakes/custom";
-
