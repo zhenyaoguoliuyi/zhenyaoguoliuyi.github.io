@@ -12,24 +12,24 @@ body {
 /* ------------------------------------------------------------
    2. 在导航栏下方添加背景图容器（注释已修复，如需启用可去掉外层 //）
    ------------------------------------------------------------ */
-// .page__content {
-//     // 背景图配置（将 /* ... */ 改为 // 单行注释，避免嵌套）
-//     background-image: url("/assets/images/DSC_3204.jpg"); // 路径确保图片存在于 assets/images/ 下
-//     background-size: cover;
-//     background-position: center;
-//     background-attachment: fixed;
-//     background-repeat: no-repeat;
-//     
-//     // 确保内容在背景图上方可读
-//     position: relative;
-// }
+ .page__content {
+     // 背景图配置（将 /* ... */ 改为 // 单行注释，避免嵌套）
+     background-image: url("/assets/images/DSC_3204.jpg"); // 路径确保图片存在于 assets/images/ 下
+     background-size: cover;
+     background-position: center;
+     background-attachment: fixed;
+     background-repeat: no-repeat;
+     
+     // 确保内容在背景图上方可读
+     position: relative;
+ }
 
 /* 调试用：暂时使用纯色背景确认布局 */
-.page__content {
+/*.page__content {
     background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
     min-height: 1000px;
 }
-
+*/
 /* ------------------------------------------------------------
    3. 为内容添加半透明背景提高可读性（可选）
    ------------------------------------------------------------ */
